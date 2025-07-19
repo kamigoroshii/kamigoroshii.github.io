@@ -349,6 +349,42 @@ span {
     opacity: 1;
 }
 
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.85em;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.18em 0.85em 0.18em 0.7em;
+  margin-left: 0.5em;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+  letter-spacing: 0.02em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  background: #eaeaea;
+  color: #222;
+  vertical-align: middle;
+  gap: 0.4em;
+}
+.project-status i {
+  font-size: 1.1em;
+  margin-right: 0.3em;
+  vertical-align: middle;
+}
+.project-status.online {
+  background: #000000;
+  color: #1a7f1a;
+  border: 1.5px solid #1a7f1a;
+}
+.project-status.in-dev {
+  background: #000000;
+  color: #b97a00;
+  border: 1.5px solid #b92500;
+}
+.project-status:hover {
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.13);
+  filter: brightness(1.08);
+}
+
 
 /* Skills Section */
 .skill {
@@ -578,7 +614,7 @@ span {
 .fade-in-up.visible .heading,
 .fade-in-up.visible h1,
 .fade-in-up.visible h3 {
-    text-shadow: 0 0 1px var(--main-color), 0 0 1px var(--main-color);
+    text-shadow: 0 0 1px var(--main-color), 0 0 2px var(--main-color);
 }
 
 .heading, h1, h3 {
