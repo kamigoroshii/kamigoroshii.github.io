@@ -63,6 +63,11 @@ canvas {
     font-weight: 800;
     cursor: pointer;
     transition: 0.3s ease;
+
+}
+
+.home-img {
+    margin-left: 3rem;
 }
 
 .logo:hover {
@@ -489,6 +494,102 @@ span {
 }
 
 
+/* Experience Section */
+.experience {
+    padding: 6rem 9% 2rem;
+}
+
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 3rem auto;
+}
+
+.experience-item {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-left: 3px solid var(--main-color);
+    transition: 0.1s ease;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px var(--main-color, #27992920);
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--main-color);
+    box-shadow: 0 0 15px var(--main-color);
+    transition: 0.1s ease;
+}
+
+.experience-item:hover {
+    transform: translateX(10px);
+    background: rgba(39, 153, 39, 0.1);
+}
+
+.experience-item:hover::before {
+    box-shadow: 0 0 30px var(--main-color);
+}
+
+.experience-item h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--main-color);
+    text-shadow: 0 0 5px var(--main-color);
+}
+
+.experience-item p {
+    font-size: 1.4rem;
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
+    transition: 0.1s ease;
+}
+
+.experience-item:hover p {
+    opacity: 1;
+}
+
+
+/* Simple fade-in-up animation for sections */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98); 
+  filter: blur(4px); 
+  transition: opacity 0.7s cubic-bezier(.77,0,.18,1), 
+              transform 0.7s cubic-bezier(.77,0,.18,1), 
+              filter 0.7s cubic-bezier(.77,0,.18,1); 
+}
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    text-shadow: 0 0 1px var(--main-color), 0 0 1px var(--main-color);
+}
+
+.fade-in-up.visible .heading,
+.fade-in-up.visible h1,
+.fade-in-up.visible h3 {
+    text-shadow: 0 0 1px var(--main-color), 0 0 1px var(--main-color);
+}
+
+.heading, h1, h3 {
+    text-shadow: none; /* Ensure no initial shadow */
+    transition: text-shadow 0.7s cubic-bezier(.77,0,.18,1);
+}
+
+.heading span, .project-item h3, .experience-item h3, .skill h1 {
+    text-shadow: none; /* Remove initial static shadow */
+}
+
 /* Media Queries */
 @media (max-width: 1200px) {
     html {
@@ -535,6 +636,13 @@ span {
     .social-icons {
         justify-content: center;
     }
+
+    .experience {
+        padding: 6rem 4% 2rem;
+    }
+    .experience-container {
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -578,6 +686,13 @@ span {
     .text {
         font-size: 2em;
     }
+
+    .experience {
+        padding: 6rem 3% 2rem;
+    }
+    .experience-container {
+        gap: 1.5rem;
+    }
 }
 
 @media (max-width: 450px) {
@@ -606,6 +721,13 @@ span {
     
     .text {
         font-size: 3em;
+    }
+
+    .experience {
+        padding: 2rem 2% 2rem;
+    }
+    .experience-item {
+        padding: 1.2rem;
     }
 }
 

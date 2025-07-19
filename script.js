@@ -113,4 +113,69 @@ setInterval(() => {
     });
 
 
+    // Matrix Rain Effect for Experience Section
+    function matrixRain(canvasId) {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let width = canvas.offsetWidth;
+        let height = canvas.offsetHeight;
+        canvas.width = width;
+        canvas.height = height;
+
+        const fontSize = 18;
+        const columns = Math.floor(width / fontSize);
+        const drops = Array(columns).fill(1);
+        const matrixChars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+        function draw() {
+            ctx.fillStyle = 'rgba(15, 15, 15, 0.15)';
+            ctx.fillRect(0, 0, width, height);
+            ctx.font = fontSize + 'px monospace';
+            ctx.fillStyle = '#00ff41';
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        let animationId;
+        function animate() {
+            draw();
+            animationId = requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            width = canvas.offsetWidth;
+            height = canvas.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+        });
+
+        // Cleanup if needed
+        return () => cancelAnimationFrame(animationId);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Scroll-triggered animation for .fade-in-up
+        const observer = new window.IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    });
+
+
     
